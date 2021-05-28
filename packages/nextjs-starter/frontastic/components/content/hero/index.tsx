@@ -12,7 +12,9 @@ export default function Hero({ data }) {
         <p className="text-3xl font-bold lg:text-5xl mb-4 lg:mb-6">
           Ultra range Levis collection
         </p>
-        <PrimaryButton className="">Buy now</PrimaryButton>
+        <PrimaryButton className="" onClick={console.log}>
+          Buy now
+        </PrimaryButton>
       </div>
     </div>
   );

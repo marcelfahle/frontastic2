@@ -7,7 +7,7 @@ const MarkdownTastic = ({ data }) => {
     <div
       className={`markdown-text markdown-position--align-${data.align} markdown-position--padding-${data.padding}`}
     >
-      <ReactMarkdown>{content}</ReactMarkdown>
+      <ReactMarkdown>markdown goes here</ReactMarkdown>
     </div>
   );
 };

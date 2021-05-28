@@ -1,4 +1,8 @@
-const StickyRightColumn = ({ className = "", leftColumn, rightColumn }) => {
+export const StickyRightColumn = ({
+  className = "",
+  leftColumn,
+  rightColumn
+}) => {
   return (
     <div
       className={`md:grid md:gap-4 md:grid-cols-1-340 md:grid-rows-1 ${className}`}

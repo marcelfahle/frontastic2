@@ -14,7 +14,9 @@ export default function Newsletter() {
             placeholder="Yes, here's my email"
             className="mb-2 sm:mb-0 sm:mr-2 rounded text-sm p-2.5 flex-1"
           />
-          <Button className="px-10">Send</Button>
+          <Button className="px-10" onClick={console.log}>
+            Send
+          </Button>
         </div>
         <p className="text-sm text-gray-400 max-w-screen-sm text-center md:px-14">
           By clicking 'Submit' you agree that we may use your information in
