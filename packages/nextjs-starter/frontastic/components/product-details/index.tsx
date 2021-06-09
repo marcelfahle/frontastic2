@@ -3,9 +3,13 @@ import Image from "next/image";
 
 import ProductData from "./product-data";
 
+import { useCart } from '@frontastic/frontastic-js'
+
 export default function ProductDetails({ data, stream }) {
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const selectedVariant = stream.variants[selectedVariantIndex];
+
+  const { addItem } = useCart();
 
   if (!data) return null;
 
@@ -25,7 +29,7 @@ export default function ProductDetails({ data, stream }) {
           variants={stream.variants}
           selectedVariant={selectedVariant}
           onVariantChange={setSelectedVariantIndex}
-          handleAddToCart={() => alert("Not so fast, Hoss!")}
+          handleAddToCart={() => addItem(selectedVariant, 1) }
           handleAddToWishlist={() => console.log("add to wishlist")}
           handleRemoveFromWishlist={() => console.log("remove from wishlist")}
           wishlisted={false}
