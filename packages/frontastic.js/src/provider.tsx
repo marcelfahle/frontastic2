@@ -5,17 +5,10 @@ import { cartItems } from "./client/cart-items";
 
 const initialState: any = {
   frontasticUrl: null,
-  frontasticKey: null
+  frontasticKey: null,
+  useCart: {}
 };
 const FrontasticContext = React.createContext(initialState);
-
-export const useCart = () => {
-  const context = React.useContext(FrontasticContext);
-
-  if (!context) throw new Error("Expected to be wrapped in FrontasticProvider");
-
-  return context.useCart;
-};
 
 export const fetcher = (url: string) =>
   fetch(url, {
@@ -45,4 +38,12 @@ export const FrontasticProvider: React.FC<{
       {children}
     </FrontasticContext.Provider>
   );
+};
+
+export const useCart = () => {
+  const context = React.useContext(FrontasticContext);
+
+  if (!context) throw new Error("Expected to be wrapped in FrontasticProvider");
+
+  return context.useCart;
 };

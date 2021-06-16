@@ -1,8 +1,14 @@
 {
   "extends": "../tsconfig.settings.json",
   "compilerOptions": {
+    "jsx": "react",
+    "target": "ES2015",
+    "module": "ES2015",
+    "moduleResolution": "node",
     "composite": true,
-    "outDir": "./dist/tsc/",
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "outDir": "./dist/",
     "rootDir": "src"
   },
   "include": [

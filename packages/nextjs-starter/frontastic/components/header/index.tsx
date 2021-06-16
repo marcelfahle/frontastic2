@@ -8,7 +8,9 @@ import IconHeart from "../../../components/icons/heart";
 import IconCart from "../../../components/icons/cart";
 
 const Header = () => {
-  const { data } = useCart();
+  const cart = useCart();
+  const { data } = cart;
+  console.log("bla", cart);
   if (!data) return null;
   return (
     <div>

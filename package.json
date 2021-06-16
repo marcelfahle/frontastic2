@@ -5,9 +5,14 @@
   "private": true,
   "author": "Frontastic",
   "license": "MIT",
-  "workspaces": [
-    "packages/*"
-  ],
+  "scripts": {
+    "setup-dev": "yarn && yarn bootstrap && yarn link-all && yarn build",
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
+    "link-all": "yarn unlink-all && lerna exec --parallel yarn link",
+    "unlink-all": "lerna exec --parallel --bail=false yarn unlink"
+  },
+  "workspaces": ["packages/*"],
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/eslint-plugin-tslint": "^4.24.0",
@@ -17,5 +22,9 @@
     "eslint-plugin-jsdoc": "^34.8.2",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "lerna": "^4.0.0"
+  },
+  "resolutions": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }

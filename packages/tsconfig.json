@@ -3,6 +3,5 @@
   "references": [
     { "path": "frontastic.js" },
     { "path": "nextjs-starter" },
-    { "path": "sveltekit-starter" },
   ]
 }
