@@ -20,9 +20,9 @@ export function Grid({
     maxWidth: isNumber(maxWidth) ? `${maxWidth}px` : (maxWidth as string),
     margin: "0 auto"
   };
-  const gridStyles = {
+  const gridStyles: CSS.Properties = {
     display: "grid",
-    gridTemplateColumns: "repeat(12, minmax(0, 1fr));",
+    gridTemplateColumns: "repeat(12, minmax(0, 1fr))",
     gridGap: spacing
   };
   return (
