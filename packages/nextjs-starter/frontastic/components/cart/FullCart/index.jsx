@@ -1,8 +1,10 @@
 import Product from "./Product";
 import Summary from "./Summary";
+import { useCart } from "@frontastic/frontastic-js";
 //import MiniSummary from "./MiniSummary";
 
 const FullCart = ({ intl, items, sum, isLoading = false }) => {
+  const { shippingMethods } = useCart();
   const buttonLabel = "Checkout";
   const vouchersLabel = "";
 
@@ -75,6 +77,12 @@ const FullCart = ({ intl, items, sum, isLoading = false }) => {
             />
           </div>
         </div>
+      </div>
+      <div>
+        <h3>Debug only, shipping methods</h3>
+        {shippingMethods.data.shippingMethods.map(sm => (
+          <p>{sm.name}</p>
+        ))}
       </div>
     </>
   );
