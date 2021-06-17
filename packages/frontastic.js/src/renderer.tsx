@@ -1,43 +1,31 @@
 import * as React from "react";
 import { FrontasticComponent } from "./component";
-import { Cell, Tastic, FrontasticRoute, ComponentRegistry } from "./types";
-
-//function Grid() {}
-
-function CellComponent({
-  size,
-  children
-}: {
-  size: number;
-  children: React.ReactNode;
-}) {
-  return <div className={`col-span-${size}`}>{children}</div>;
-}
-
-const gridStyles = {
-  display: "grid",
-  maxWidth: "980px",
-  border: "1px solid red"
-};
-
-// problem
-// We want to keep styles as minimal as possible
-// users need to be able to overwrite basics
-//
+import { Grid } from "./grid";
+import { Cell } from "./cell";
+import {
+  Cell as CellType,
+  Tastic,
+  FrontasticRoute,
+  ComponentRegistry
+} from "./types";
 
 export function FrontasticRenderer({
   data,
-  components = {}
+  components = {},
+  maxWidth,
+  spacing
 }: {
   data: FrontasticRoute;
   components: ComponentRegistry;
+  maxWidth: string;
+  spacing: string;
 }) {
   const { head, main, footer } = data.page.regions;
   return (
     <div>
-      <div style={gridStyles}>
-        {head.elements.map((cell: Cell) => (
-          <CellComponent size={cell.configuration.size} key={cell.cellId}>
+      <Grid maxWidth={maxWidth} spacing={spacing}>
+        {head.elements.map((cell: CellType) => (
+          <Cell size={cell.configuration.size} key={cell.cellId}>
             {cell.tastics.map(t => (
               <FrontasticComponent
                 components={components}
@@ -46,12 +34,12 @@ export function FrontasticRenderer({
                 streams={data.data.stream}
               ></FrontasticComponent>
             ))}
-          </CellComponent>
+          </Cell>
         ))}
-      </div>
-      <div className="grid grid-cols-12 gap-4">
-        {main.elements.map((cell: Cell) => (
-          <CellComponent size={cell.configuration.size} key={cell.cellId}>
+      </Grid>
+      <Grid maxWidth={maxWidth} spacing={spacing}>
+        {main.elements.map((cell: CellType) => (
+          <Cell size={cell.configuration.size} key={cell.cellId}>
             {cell.tastics.map((t: Tastic) => (
               <FrontasticComponent
                 components={components}
@@ -60,12 +48,12 @@ export function FrontasticRenderer({
                 streams={data.data.stream}
               ></FrontasticComponent>
             ))}
-          </CellComponent>
+          </Cell>
         ))}
-      </div>
-      <div className="grid grid-cols-12 gap-4">
-        {footer.elements.map((cell: Cell) => (
-          <CellComponent size={cell.configuration.size} key={cell.cellId}>
+      </Grid>
+      <Grid maxWidth={maxWidth} spacing={spacing}>
+        {footer.elements.map((cell: CellType) => (
+          <Cell size={cell.configuration.size} key={cell.cellId}>
             {cell.tastics.map((t: Tastic) => (
               <FrontasticComponent
                 components={components}
@@ -74,9 +62,9 @@ export function FrontasticRenderer({
                 streams={data.data.stream}
               ></FrontasticComponent>
             ))}
-          </CellComponent>
+          </Cell>
         ))}
-      </div>
+      </Grid>
     </div>
   );
 }
