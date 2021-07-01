@@ -2,7 +2,8 @@
 
 export function getError(errors: any[], status: number) {
   //return new FetcherError({ errors, status })
-  return new Error(`Error ${errors.length}, ${status}`);
+  console.log("errors,", errors);
+  return new Error(`Error, ${status}`);
 }
 
 export async function getAsyncError(res: Response) {

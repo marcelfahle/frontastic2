@@ -1,6 +1,6 @@
 {
   "name": "@frontastic/frontastic-js",
-  "version": "0.0.6",
+  "version": "0.0.10",
   "main": "./dist/main.js",
   "typings": "./dist/main.d.ts",
   "bin": {},
@@ -10,8 +10,8 @@
     "cli": "ts-node src/cli.ts",
     "test": "yarn jest",
     "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
-    "build": "yarn clean && tsc && yarn esbuild",
-    "build:prod": "yarn clean && tsc && yarn esbuild:prod",
+    "build": "yarn clean && yarn tsc && yarn esbuild",
+    "build:prod": "yarn clean && yarn tsc && yarn esbuild:prod",
     "clean": "rm -rf dist build",
     "ts-node": "ts-node",
     "esbuild": "node build.js",

@@ -8,6 +8,6 @@ const shared = {
   external: Object.keys(dependencies).concat(Object.keys(peerDependencies))
 };
 
-build({ ...shared, outfile: "dist/main.js", format: "esm" });
+build({ ...shared, outfile: "dist/main.js", format: "cjs" });
 
 // new Generator({ entry: "src/main.ts", output: "dist/main.d.ts" }).generate();

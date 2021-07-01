@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { addItem, removeItem } from "./client/add-cart-item";
+import { updateCart } from "./client/update-cart";
 import { cartItems } from "./client/cart-items";
 import { shippingMethods } from "./client/shipping-methods";
 
@@ -32,6 +33,7 @@ export const FrontasticProvider: React.FC<{
         useCart: {
           ...cartItems(frontasticUrl, frontasticKey),
           addItem: addItem(frontasticUrl, frontasticKey),
+          updateCart: updateCart(frontasticUrl, frontasticKey),
           removeItem: removeItem(frontasticUrl, frontasticKey),
           shippingMethods: shippingMethods(frontasticUrl, frontasticKey)
         }

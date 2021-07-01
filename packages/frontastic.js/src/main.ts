@@ -7,6 +7,7 @@ function createClient(frontasticUrl: string, frontasticKey: string) {
 export { createClient };
 export * from "./server/get-route-data";
 export * from "./client/add-cart-item";
+export * from "./client/update-cart";
 export * from "./client/cart-items";
 export * from "./types";
 export * from "./renderer";

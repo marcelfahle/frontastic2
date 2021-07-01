@@ -3,13 +3,13 @@
   "compilerOptions": {
     "jsx": "react",
     "target": "ES2015",
-    "module": "ES2015",
+    "module": "commonjs",
     "moduleResolution": "node",
     "composite": true,
     "emitDeclarationOnly": true,
     "declaration": true,
     "outDir": "./dist/",
-    "rootDir": "src"
+    "rootDir": "./src/"
   },
   "include": [
     "./src/**/*.tsx",
