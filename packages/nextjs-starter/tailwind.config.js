@@ -6,7 +6,13 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {}
+    extend: {
+      gridTemplateColumns: {
+        '1-340': '1fr 340px',
+        '120-1xfr': '120px 1fr',
+        '1.25rem-1fr-1.25rem-1fr-1.25rem': '1.25rem 1fr 1.25rem 1fr 1.25rem',
+      }
+    }
   },
   variants: {
     extend: {}

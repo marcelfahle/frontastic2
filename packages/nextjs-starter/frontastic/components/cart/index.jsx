@@ -7,7 +7,6 @@ import { EmptyState } from "../../../components/empty-state";
 
 const Cart = () => {
   const { data } = useCart();
-  console.log("cart", data);
   if (data && data.cart.lineItems && data.cart.lineItems.length > 0) {
     const { lineItems, sum, currency } = data.cart;
 

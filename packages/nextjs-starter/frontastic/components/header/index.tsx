@@ -10,7 +10,6 @@ import IconCart from "../../../components/icons/cart";
 const Header = () => {
   const cart = useCart();
   const { data } = cart;
-  console.log("bla", cart);
   if (!data) return null;
   return (
     <div>

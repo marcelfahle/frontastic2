@@ -1,5 +1,7 @@
 import "tailwindcss/tailwind.css";
 
+import "./app.css";
+
 import { FrontasticProvider } from "@frontastic/frontastic-js";
 
 function FrontasticStarter({ Component, pageProps }) {

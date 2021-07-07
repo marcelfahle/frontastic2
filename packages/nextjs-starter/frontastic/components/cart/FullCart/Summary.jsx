@@ -6,10 +6,11 @@ import Price from "../../product/price";
 import Button from "../../buttons";
 
 const Summary = ({
-  disabled = false,
+  buttonDisabled = false,
   isLoading = false,
   onClick,
-  buttonLabel
+  buttonLabel,
+  vouchersLabel,
 }) => {
   const { data } = useCart();
 
@@ -37,7 +38,7 @@ const Summary = ({
 
   return (
     <section>
-      <div className="text-left mb-4 grid grid-cols-2 col-gap-6 row-gap-2">
+      <div className="text-left mb-4 grid grid-cols-2 gap-x-6 gap-y-2">
         <p className="text-md text-neutral-900 leading-normal">Subtotal</p>
         <p className="text-md text-right text-neutral-900 uppercase leading-normal">
           <Price value={productPrice + discountPrice} />
@@ -52,13 +53,13 @@ const Summary = ({
               {shippingMethod.price ? (
                 <Price value={shippingMethod.price} />
               ) : (
-                <span>Free Shipping</span>
+                <span>Free</span>
               )}
             </p>
           </>
         ) : null}
 
-        <span className="mb-3 block w-full h-px bg-neutral-300 col-start-auto col-end-span-2" />
+        <span className="mb-3 block w-full h-px bg-gray-300 col-span-2" />
 
         <p className="text-md text-neutral-900 leading-none font-bold">Total</p>
 
@@ -68,9 +69,8 @@ const Summary = ({
           </p>
         )}
 
-        <div className="text-sm text-neutral-600 col-start-auto col-end-span-2">
-          {totalTaxes && <Price value={totalTaxes} />} <br />
-          (Total amount incl.VAT)
+        <div className="text-sm text-neutral-600 col-span-2">
+          (Total amount {totalTaxes && <Price value={totalTaxes} />} incl. VAT)
         </div>
       </div>
 
@@ -78,18 +78,17 @@ const Summary = ({
         <Button
           name={buttonLabel}
           className={`btn bg-primary-500 text-white w-full h-10 focus:outline-none ${
-            isLoading || disabled ? "cursor-default" : ""
+            isLoading || buttonDisabled ? "cursor-default" : ""
           }`}
           onClick={onClick}
-          disabled={isLoading || disabled}
+          disabled={isLoading || buttonDisabled}
         >
           {isLoading ? "loading" : buttonLabel}
         </Button>
       )}
-
-      <p className="text-sm">
-        You can enter voucher codes in the last step of the order process.
-      </p>
+      {vouchersLabel && (
+        <p className="mt-4 text-xs text-neutral-600 text-center">{vouchersLabel}</p>
+      )}
     </section>
   );
 };

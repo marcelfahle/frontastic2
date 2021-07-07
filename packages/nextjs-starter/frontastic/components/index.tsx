@@ -9,6 +9,7 @@ import Newsletter from "./forms/newsletter";
 import HorizontalSpacer from "./layout/horizontal-spacer";
 import Benefits from "./content/benefits";
 import Cart from "./cart";
+import Checkout from "./checkout";
 
 export const components = {
   "frontastic/boost/product/product-slider": ProductSlider,
@@ -21,5 +22,6 @@ export const components = {
   "frontastic/boost/forms/newsletter-block": Newsletter,
   "frontastic/boost/content/feature-service": Benefits,
   "frontastic/boost/cart": Cart,
+  "frontastic/boost/checkout": Checkout,
   default: NotFound
 };

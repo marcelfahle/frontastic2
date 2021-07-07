@@ -14,7 +14,7 @@ export default function ProductDetails({ data, stream }) {
   if (!data) return null;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 col-gap-8 p-5 lg:px-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 p-5 lg:px-8">
       <div className="relative mt-0 md:mt-6 h-96 md:h-auto">
         <Image
           src={selectedVariant.images[0]}
