@@ -1,27 +1,30 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef } from "react";
+import { useTranslation } from "next-i18next";
 
-import Stepper from './stepper'
-import Panels from './panels'
+import Stepper from "./stepper";
+import Panels from "./panels";
 
-import ShippingPanel from '../panels/shipping'
-import OverviewPanel from '../panels/overview'
-import PaymentPanel from '../panels/payment'
+import ShippingPanel from "../panels/shipping";
+import OverviewPanel from "../panels/overview";
+import PaymentPanel from "../panels/payment";
 
 export default function CheckoutLayout({ data, countries, policy, isLoading }) {    
     const [current, setCurrent] = useState(0)
     const ts = useRef(null)
 
+    const { t } = useTranslation('checkout');
+
     const steps = [
         {
-            name: 'Shipping',
+            name: t('shipping'),
             component: ShippingPanel,
         },
         {
-            name: 'Overview',
+            name: t('overview'),
             component: OverviewPanel,
         },
         {
-            name: 'Payment',
+            name: t('payment'),
             component: PaymentPanel,
         },
     ]

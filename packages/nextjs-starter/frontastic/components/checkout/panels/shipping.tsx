@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import { useTranslation } from "next-i18next";
 import { useCart } from "@frontastic/frontastic-js";
 
 import Summary from "../../cart/FullCart/Summary";
@@ -9,6 +10,8 @@ import ShippingForm from '../forms/shipping';
 import BillingForm from '../forms/billing';
 
 const ShippingPanel = ({ data, countries, goToNextPanel }) => {
+    const { t } = useTranslation('checkout');
+
     const { updateCart } = useCart();
 
     const isValid = () => {
@@ -104,7 +107,7 @@ const ShippingPanel = ({ data, countries, goToNextPanel }) => {
                         <div className='text-sm text-neutral-900 flex items-center'>
                             <Checkbox
                                 className='text-xl'
-                                label='Use same billing details as delivery address'
+                                label={t('billingDetailsLabel')}
                                 value={isBillingSameAsShipping}
                                 onClick={() => {
                                     setBillingIsSameAsShipping(!isBillingSameAsShipping)
@@ -130,7 +133,7 @@ const ShippingPanel = ({ data, countries, goToNextPanel }) => {
             <div className='self-baseline md:sticky md:top-0'>
                 <div className='px-4 py-6 md:py-4 md:shadow-md md:rounded border-t-2 md:border-t-0 border-neutral-100 bg-white'>
                     <Summary 
-                        buttonLabel='Continue to overview'
+                        buttonLabel={t('nextOverview')}
                         buttonDisabled={!isValid()}
                         onClick={onNextClicked}
                     />

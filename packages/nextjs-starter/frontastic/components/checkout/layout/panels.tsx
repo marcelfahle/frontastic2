@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef } from "react";
 import SlickSlider from "react-slick";
 
 const Panels = forwardRef(

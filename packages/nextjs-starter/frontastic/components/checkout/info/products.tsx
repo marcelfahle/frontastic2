@@ -1,13 +1,16 @@
-import React from 'react'
-import classnames from 'classnames'
+import React from "react";
+import classnames from "classnames";
+import { useTranslation } from "next-i18next";
 
-import Product from './product'
+import Product from "./product";
 
 const Products = ({ products }) => {    
+    const { t } = useTranslation('checkout');
+
     return (
         <>
             <div className='mb-4 text-xs text-neutral-600 font-bold leading-tight uppercase'>
-                Your order
+                {t('yourOrder')}
             </div>
 
             {products?.map((item, i) => {
@@ -30,4 +33,4 @@ const Products = ({ products }) => {
     )
 }
 
-export default Products
+export default Products;

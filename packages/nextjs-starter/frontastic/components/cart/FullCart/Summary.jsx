@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useCart } from "@frontastic/frontastic-js";
+import { useTranslation } from "next-i18next";
 
 import Price from "../../product/price";
 import Button from "../../buttons";
@@ -12,6 +13,8 @@ const Summary = ({
   buttonLabel,
   vouchersLabel,
 }) => {
+  const { t } = useTranslation('cart');
+
   const { data } = useCart();
 
   const { sum, lineItems, taxed, shippingMethod } = data.cart;
@@ -39,7 +42,7 @@ const Summary = ({
   return (
     <section>
       <div className="text-left mb-4 grid grid-cols-2 gap-x-6 gap-y-2">
-        <p className="text-md text-neutral-900 leading-normal">Subtotal</p>
+        <p className="text-md text-neutral-900 leading-normal">{t('subtotal')}</p>
         <p className="text-md text-right text-neutral-900 uppercase leading-normal">
           <Price value={productPrice + discountPrice} />
         </p>
@@ -47,13 +50,13 @@ const Summary = ({
         {shippingMethod ? (
           <>
             <p className="text-md text-neutral-900 leading-normal">
-              Shipping Costs
+              {t('shippingCosts')}
             </p>
             <p className="text-md text-right text-neutral-900 uppercase leading-normal">
               {shippingMethod.price ? (
                 <Price value={shippingMethod.price} />
               ) : (
-                <span>Free</span>
+                <span>{t('shippingCosts')}</span>
               )}
             </p>
           </>
@@ -61,7 +64,7 @@ const Summary = ({
 
         <span className="mb-3 block w-full h-px bg-gray-300 col-span-2" />
 
-        <p className="text-md text-neutral-900 leading-none font-bold">Total</p>
+        <p className="text-md text-neutral-900 leading-none font-bold">{t('totalAmount')}</p>
 
         {sum && (
           <p className="text-md text-right text-neutral-900 leading-none font-bold">
@@ -70,7 +73,7 @@ const Summary = ({
         )}
 
         <div className="text-sm text-neutral-600 col-span-2">
-          (Total amount {totalTaxes && <Price value={totalTaxes} />} incl. VAT)
+          ({t('totalAmount')} {totalTaxes && <Price value={totalTaxes} />} {t('inclVat')})
         </div>
       </div>
 

@@ -4,7 +4,6 @@ import styles from "./markdown.module.css";
 
 const MarkdownTastic = ({ data }) => {
   const content: string = Object.values(data.text)[0] as string;
-  console.log(styles);
 
   const paddingClass = {
     small: "p-2",
