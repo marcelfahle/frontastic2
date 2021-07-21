@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { useCart } from "@frontastic/frontastic-js";
+import { useTranslation } from "next-i18next";
 
 import Price from "../../product/price";
 import { Dropdown } from "../../../../components";
@@ -16,6 +17,8 @@ const Product = ({
   color,
   size
 }) => {
+  const { t } = useTranslation('product');
+
   const { removeItem } = useCart();
 
   const productCounter = Array.from(Array(10).keys()).map(i => {
@@ -39,13 +42,13 @@ const Product = ({
 
         {color && (
           <div className="mt-3 text-sm text-neutral-600 leading-tight">
-            Color: {color}
+            {t('color')}: {color}
           </div>
         )}
 
         {size && (
           <div className="text-sm text-neutral-600 leading-tight">
-            Size: {size}
+            {t('size')}: {size}
           </div>
         )}
 

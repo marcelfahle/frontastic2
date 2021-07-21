@@ -1,6 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import { useTranslation } from "next-i18next";
 
 const Discount = () => {
+    const { t } = useTranslation('checkout');
+
     const [discountCode, setDiscountCode] = useState('')
 
     const redeemDiscount = () => {
@@ -17,7 +20,7 @@ const Discount = () => {
     return (
         <>
             <div className='text-md text-neutral-900 leading-none font-bold'>
-                Enter your discount code
+                {t('enterYourDiscountCode')}
             </div>
             <input
                 type='text'
@@ -27,11 +30,11 @@ const Discount = () => {
                 onChange={(e) => setDiscountCode(e.target.value)}
             />
             <button
-                name='Apply'
+                name={t('apply')}
                 className='btn-outline btn-outline-black outline-none focus:outline-none flex ml-auto h-10'
                 onClick={redeemDiscount}
             >
-                Apply
+                {t('apply')}
             </button>
         </>
     )

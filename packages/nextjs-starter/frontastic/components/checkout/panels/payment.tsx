@@ -1,10 +1,13 @@
-import React from 'react'
+import React from "react";
+import { useTranslation } from "next-i18next";
 
 import Summary from "../../cart/FullCart/Summary";
 
 import PaymentMethodForm from "../forms/payment-method";
 
 const PaymentPanel = ({ data }) => {
+    const { t } = useTranslation('checkout');
+
     //const { checkoutCart } = useCart();
 
     const onChangePaymentMethod = (pm) => {
@@ -36,7 +39,7 @@ const PaymentPanel = ({ data }) => {
             <div className='self-baseline md:sticky md:top-0'>
                 <div className='px-4 py-6 md:py-4 md:shadow-md md:rounded border-t-2 md:border-t-0 border-neutral-100 bg-white'>
                     <Summary 
-                        buttonLabel='Pay'
+                        buttonLabel={t('pay')}
                         onClick={onNextClicked}
                     />
                 </div>

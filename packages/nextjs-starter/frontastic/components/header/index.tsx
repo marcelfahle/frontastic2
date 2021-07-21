@@ -22,7 +22,7 @@ const Header = () => {
             </a>
           </Link>
         </div>
-        <div className="grid gap-5 grid-cols-3">
+        <div className="grid gap-5 grid-cols-3">          
           <IconSearch className="" />
           <IconHeart className="" />
           <div className="relative">

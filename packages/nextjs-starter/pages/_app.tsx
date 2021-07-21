@@ -3,6 +3,7 @@ import "tailwindcss/tailwind.css";
 import "./app.css";
 
 import { FrontasticProvider } from "@frontastic/frontastic-js";
+import { appWithTranslation } from 'next-i18next';
 
 function FrontasticStarter({ Component, pageProps }) {
   return (
@@ -15,4 +16,4 @@ function FrontasticStarter({ Component, pageProps }) {
   );
 }
 
-export default FrontasticStarter;
+export default appWithTranslation(FrontasticStarter);

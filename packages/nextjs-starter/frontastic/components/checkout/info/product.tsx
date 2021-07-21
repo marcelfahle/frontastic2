@@ -1,8 +1,11 @@
-import React from 'react'
+import React from "react";
+import { useTranslation } from "next-i18next";
 
-import Price from '../../../../components/price'
+import Price from "../../../../components/price";
 
 const Product = ({ image, name, designer, count, price, discountedPrice, color, size }) => {
+    const { t } = useTranslation('product');
+
     return (
         <div className='grid grid-cols-120-1xfr gap-x-4'>
             <div>
@@ -22,18 +25,18 @@ const Product = ({ image, name, designer, count, price, discountedPrice, color, 
 
                 {color && (
                     <div className='mt-3 text-sm text-neutral-600 leading-tight'>
-                        Color {color}
+                        {t('color')} {color}
                     </div>
                 )}
 
                 {size && (
                     <div className='text-sm text-neutral-600 leading-tight'>
-                        Size {size}
+                        {t('color')} {size}
                     </div>
                 )}
 
                 <div className='text-sm text-neutral-600 leading-tight'>
-                    Quantity {count}
+                    {t('quantity')} {count}
                 </div>
 
                 <div className='mt-3'>

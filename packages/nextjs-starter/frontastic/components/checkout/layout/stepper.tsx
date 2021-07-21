@@ -1,5 +1,5 @@
-import React, { Fragment, forwardRef } from 'react'
-import classnames from 'classnames'
+import React, { Fragment, forwardRef } from "react";
+import classnames from "classnames";
 
 import Step from './step'
 
@@ -34,16 +34,13 @@ const Stepper = forwardRef(({ steps, current, setCurrent }, ts) => {
                     <div className='flex justify-between'>
                         {steps.map(({ name }, i) => {
                             return (
-                                <div key={i}>
-                                    <div
-                                        className={classnames({
-                                            'mt-2 text-xs': true,
-                                            'text-neutral-600': i !== current,
-                                            'font-bold text-neutral-900': i === current,
-                                        })}
-                                    >
-                                        {name}
-                                    </div>
+                                <div key={i}
+                                    className={classnames('mt-2 text-xs capitalize', {
+                                        'text-neutral-600': i !== current,
+                                        'font-bold text-neutral-900': i === current,
+                                    })}
+                                >
+                                    {name}
                                 </div>
                             )
                         })}

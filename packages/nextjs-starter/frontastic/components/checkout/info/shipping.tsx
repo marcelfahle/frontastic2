@@ -1,18 +1,21 @@
 import React from 'react'
+import { useTranslation } from "next-i18next";
 
 import { convertToCountryName, convertToStateName } from './../countries'
 import EditIcon from '../../../../components/icons/edit'
 
 const Shipping = ({ address, onClick }) => {
+    const { t } = useTranslation('checkout');
+
     return (
         <>
             <div className='mb-3 flex items-center justify-between'>
                 <span className='text-xs text-neutral-600 font-bold leading-tight uppercase'>
-                    Shipping information
+                    {t('shippingInformation')}
                 </span>
 
                 <span className='text-sm text-blue-500 leading-tight cursor-pointer flex' onClick={onClick}>
-                    Edit <EditIcon className='inline fill-current text-sm ml-2' />
+                    {t('edit')} <EditIcon className='inline fill-current text-sm ml-2' />
                 </span>
             </div>
 

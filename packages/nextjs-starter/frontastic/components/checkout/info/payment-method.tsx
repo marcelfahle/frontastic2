@@ -1,18 +1,21 @@
-import React from 'react'
-import classnames from 'classnames'
+import React from "react";
+import classnames from "classnames";
+import { useTranslation } from "next-i18next";
 
-import EditIcon from '../../../../components/icons/edit'
+import EditIcon from "../../../../components/icons/edit";
 
 const PaymentMethod = ({ payments, onClick }) => {
+    const { t } = useTranslation('checkout');
+
     return (
         <>
             <div className='mb-3 flex items-center justify-between'>
                 <span className='text-xs text-neutral-600 font-bold leading-tight uppercase'>
-                    Payment method
+                    {t('paymentMethod')}
                 </span>
 
                 <span className='text-sm text-blue-500 leading-tight cursor-pointer flex items-center' onClick={onClick}>
-                    Edit <EditIcon className='inline fill-current text-sm ml-2' />
+                    {t('edit')} <EditIcon className='inline fill-current text-sm ml-2' />
                 </span>
             </div>
 
