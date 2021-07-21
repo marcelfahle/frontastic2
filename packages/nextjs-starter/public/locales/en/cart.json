@@ -7,7 +7,7 @@
     "enterVouchers": "You can enter voucher codes in the last step of the order process.",
     "checkout": "Checkout",
     "shippingCosts": "Shipping costs",
-    "free": "Free",
+    "freeShipping": "Free",
     "inclVat": "incl.VAT",
     "remove": "Remove"    
 }

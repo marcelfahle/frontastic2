@@ -56,7 +56,7 @@ const Summary = ({
               {shippingMethod.price ? (
                 <Price value={shippingMethod.price} />
               ) : (
-                <span>{t('shippingCosts')}</span>
+                <span>{t('freeShipping')}</span>
               )}
             </p>
           </>

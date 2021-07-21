@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { useRouter } from 'next/router'
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 
 const LocaleSwitcher = ({ className }) => {
     const router = useRouter();
@@ -18,7 +18,7 @@ const LocaleSwitcher = ({ className }) => {
             className={`${className} uppercase`}
             value={router.locale}
             onChange={(event) => {
-                router.push(router.asPath, router.asPath, { locale: event.target.value })
+                router.push(router.asPath, router.asPath, { locale: event.target.value, scroll: false })
             }}
         >
             {router.locales.map((locale, i) => {
