@@ -1,7 +1,8 @@
 import { createClient, FrontasticRenderer } from "@frontastic/frontastic-js";
+import { GetStaticProps } from "next";
 
 import { components } from "../frontastic/components";
-import { GetStaticProps } from "next";
+import styles from "./slug.module.css";
 
 export default function Slug({ data }) {
   if (!data) {
@@ -9,7 +10,11 @@ export default function Slug({ data }) {
   }
 
   return (
-    <FrontasticRenderer data={data} components={components} maxWidth={960} />
+    <FrontasticRenderer
+      data={data}
+      components={components}
+      wrapperClassName={styles.gridWrapper}
+    />
   );
 }
 

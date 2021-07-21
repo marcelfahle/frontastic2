@@ -1,4 +1,5 @@
 import * as React from "react";
+// import * as CSS from "csstype";
 import { FrontasticComponent } from "./component";
 import { Grid } from "./grid";
 import { Cell } from "./cell";
@@ -12,18 +13,18 @@ import {
 export function FrontasticRenderer({
   data,
   components = {},
-  maxWidth,
-  spacing
+  gridClassName,
+  wrapperClassName
 }: {
   data: FrontasticRoute;
   components: ComponentRegistry;
-  maxWidth: string;
-  spacing: string;
+  gridClassName?: string;
+  wrapperClassName?: string;
 }) {
   const { head, main, footer } = data.page.regions;
   return (
     <div>
-      <Grid maxWidth={maxWidth} spacing={spacing}>
+      <Grid gridClassName={gridClassName} wrapperClassName={wrapperClassName}>
         {head.elements.map((cell: CellType) => (
           <Cell size={cell.configuration.size} key={cell.cellId}>
             {cell.tastics.map(t => (
@@ -37,7 +38,7 @@ export function FrontasticRenderer({
           </Cell>
         ))}
       </Grid>
-      <Grid maxWidth={maxWidth} spacing={spacing}>
+      <Grid gridClassName={gridClassName} wrapperClassName={wrapperClassName}>
         {main.elements.map((cell: CellType) => (
           <Cell size={cell.configuration.size} key={cell.cellId}>
             {cell.tastics.map((t: Tastic) => (
@@ -51,7 +52,7 @@ export function FrontasticRenderer({
           </Cell>
         ))}
       </Grid>
-      <Grid maxWidth={maxWidth} spacing={spacing}>
+      <Grid gridClassName={gridClassName} wrapperClassName={wrapperClassName}>
         {footer.elements.map((cell: CellType) => (
           <Cell size={cell.configuration.size} key={cell.cellId}>
             {cell.tastics.map((t: Tastic) => (
