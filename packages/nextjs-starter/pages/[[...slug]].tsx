@@ -1,5 +1,6 @@
 import { createClient, FrontasticRenderer } from "@frontastic/frontastic-js";
 import { GetStaticProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { components } from "../frontastic/components";
 import styles from "./slug.module.css";
@@ -18,7 +19,10 @@ export default function Slug({ data }) {
   );
 }
 
-export const getServerSideProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetStaticProps = async ({
+  params,
+  locale
+}) => {
   const frontastic = createClient(
     "https://demo-show.frontastic.io",
     "API_KEY_GOES_HERE"
@@ -26,7 +30,16 @@ export const getServerSideProps: GetStaticProps = async ({ params }) => {
   const { data } = await frontastic.getRouteData(params);
 
   return {
-    props: { data }
+    props: {
+      data,
+      ...(await serverSideTranslations(locale, [
+        "common",
+        "cart",
+        "product",
+        "checkout"
+      ]))
+    }
+
     // revalidate: 600
   };
 };

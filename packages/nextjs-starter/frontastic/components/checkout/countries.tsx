@@ -1,11 +1,15 @@
+import { useTranslation } from "next-i18next";
+
 const convertToCountryName = (code) => {
-    return `${code}`
-    //return intl.formatMessage({ id: `country.${code}` })    
+    const { t } = useTranslation('common');
+
+    return t(`country.${code}`);
 }
 
 const convertToStateName = (country, state) => {
-    return `${country}.${state}`
-    //return intl.formatMessage({ id: `state.${country}.${state}` })
+    const { t } = useTranslation('common');
+
+    return t(`state.${country}.${state}`);
 }
 
 const getCountryStates = (country) => {

@@ -4,7 +4,7 @@ import DefaultLoader from '../../../components/default-loader';
 
 import CheckoutLayout from './layout';
 
-import { paymentMethods } from './mock'
+import { paymentMethods } from './mock';
 
 const Checkout = () => {
     const { data, shippingMethods } = useCart();

@@ -1,8 +1,9 @@
-import React from 'react'
-import classnames from 'classnames'
-import { useForm } from 'react-hook-form'
+import React from "react";
+import classnames from "classnames";
+import { useForm } from "react-hook-form";
+import { useTranslation } from "next-i18next";
 
-import Price from '../../../../components/price'
+import Price from "../../../../components/price";
 
 const ShippingMethod = ({ defaultValues, shippingMethods, onSubmit }) => {
     const { register, getValues, setValue } = useForm({ mode: 'onChange',
@@ -10,6 +11,8 @@ const ShippingMethod = ({ defaultValues, shippingMethods, onSubmit }) => {
             shippingMethodId: defaultValues?.shippingMethodId ? defaultValues.shippingMethodId : null,
         },
     })
+
+    const { t } = useTranslation('checkout');
 
     const onChange = () => {
         onSubmit(getValues())
@@ -22,7 +25,7 @@ const ShippingMethod = ({ defaultValues, shippingMethods, onSubmit }) => {
     return (
         <form onChange={onChange}>
             <div className='mb-4 text-xs text-neutral-600 font-bold leading-tight uppercase'>
-                Shipping methods
+                {t('shippingMethods')}
             </div>
 
             {shippingMethods?.map((sm, i) => {
@@ -58,7 +61,7 @@ const ShippingMethod = ({ defaultValues, shippingMethods, onSubmit }) => {
                             {getShippingMethodPrice(sm) ? (
                                 <Price value={getShippingMethodPrice(sm)} />
                             ) : (
-                                <span className='uppercase'>Free</span>
+                                <span className='uppercase'>{t('freeShipping')}</span>
                             )}
                         </span>
                     </div>

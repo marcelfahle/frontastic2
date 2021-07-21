@@ -1,15 +1,14 @@
 import Product from "./Product";
 import Summary from "./Summary";
 import { useCart } from "@frontastic/frontastic-js";
-//import MiniSummary from "./MiniSummary";
 
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
-const FullCart = ({ intl, items, sum, isLoading = false }) => {
+const FullCart = ({ items, sum, isLoading = false }) => {
+  const { t } = useTranslation('cart');
+
   const { shippingMethods } = useCart();
-
-  const buttonLabel = "Checkout";
-  const vouchersLabel = "";
 
   const router = useRouter();
 
@@ -30,13 +29,13 @@ const FullCart = ({ intl, items, sum, isLoading = false }) => {
           <div className="md:shadow-md md:rounded bg-white">
             <div className="p-4 border-b-2 border-neutral-100">
               <h1 className="hidden md:block md:px-2 md:pt-1 md:pb-5 text-2xl text-neutral-900 font-bold leading-none">
-                My Cart
+                {t('myCart')}
               </h1>
 
               <section>
-                {items.map((item, index) => {
+                {items.map((item, i) => {
                   return (
-                    <div key={index} className="mb-8">
+                    <div key={i} className="mb-8">
                       <Product
                         itemId={item.lineItemId}
                         name={item.name}
@@ -62,7 +61,7 @@ const FullCart = ({ intl, items, sum, isLoading = false }) => {
 
             <div className="px-4 py-5 border-b-2 border-neutral-100 md:border-0">
               <h2 className="text-lg text-neutral-900 font-bold leading-none">
-                Payment Methods
+                {t('paymentMethods')}
               </h2>
 
               <div className="mt-4">💳 💳 💳</div>
@@ -74,8 +73,7 @@ const FullCart = ({ intl, items, sum, isLoading = false }) => {
           <div className="p-4 border-b-2 border-neutral-100 border-0 shadow-md md:rounded bg-white">
             <Summary
               isLoading={isLoading}
-              buttonLabel={buttonLabel}
-              vouchersLabel={vouchersLabel}
+              buttonLabel={t('checkout')}
               onClick={() => {
                 router.push('/checkout/checkout')
               }}
@@ -85,8 +83,8 @@ const FullCart = ({ intl, items, sum, isLoading = false }) => {
       </div>
       <div>
         <h3>Debug only, shipping methods</h3>
-        {shippingMethods?.data?.shippingMethods.map(sm => (
-          <p>{sm.name}</p>
+        {shippingMethods?.data?.shippingMethods.map((sm, i) => (
+          <p key={i}>{sm.name}</p>
         ))}
       </div>
     </>

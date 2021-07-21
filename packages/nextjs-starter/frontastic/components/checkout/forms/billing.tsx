@@ -1,12 +1,15 @@
-import React from 'react'
-import classnames from 'classnames'
-import { useForm } from 'react-hook-form'
+import React from "react";
+import classnames from "classnames";
+import { useForm } from "react-hook-form";
+import { useTranslation } from "next-i18next";
 
-import ErrorMessage from '../../../../components/error-message'
-import { convertToCountryName, convertToStateName, getCountryStates } from './../countries'
+import ErrorMessage from "../../../../components/error-message";
+import { convertToCountryName, convertToStateName, getCountryStates } from "./../countries";
 
 const Billing = ({ countries, defaultValues = {}, onSubmit }) => {
-    const requiredError = 'This field is required'
+    const { t } = useTranslation(['common', 'checkout']);
+
+    const requiredError = t('fieldIsRequired');
 
     const { register, getValues, formState: { errors } } = useForm({ mode: 'onChange', 
         defaultValues: defaultValues || {} 
@@ -23,12 +26,12 @@ const Billing = ({ countries, defaultValues = {}, onSubmit }) => {
     return (
         <form onChange={onChange}>
             <div className='mb-4 text-xs text-neutral-600 font-bold leading-tight uppercase'>
-                Billing address
+                {t('checkout:billingDetails')}
             </div>
 
             <div className='mb-4'>
                 <label className='text-sm text-neutral-700 leading-tight' htmlFor='firstName'>
-                    First name *
+                    {t('firstName')} *
                 </label>
                 <input
                     id='firstName'
@@ -44,7 +47,7 @@ const Billing = ({ countries, defaultValues = {}, onSubmit }) => {
 
             <div className='mb-4'>
                 <label className='text-sm text-neutral-700 leading-tight' htmlFor='lastName'>
-                    Last name *
+                    {t('lastName')} *
                 </label>
                 <input
                     id='lastName'
@@ -60,7 +63,7 @@ const Billing = ({ countries, defaultValues = {}, onSubmit }) => {
 
             <div className='mb-4'>
                 <label className='text-sm text-neutral-700 leading-tight' htmlFor='phone'>
-                    Phone
+                    {t('phone')}
                 </label>
                 <input 
                     id='phone' 
@@ -73,7 +76,7 @@ const Billing = ({ countries, defaultValues = {}, onSubmit }) => {
 
             <div className='mb-4'>
                 <label className='text-sm text-neutral-700 leading-tight' htmlFor='streetName'>
-                    Address *
+                    {t('address')} *
                 </label>
                 <input
                     id='streetName'
@@ -89,7 +92,7 @@ const Billing = ({ countries, defaultValues = {}, onSubmit }) => {
 
             <div className='mb-4'>
                 <label className='text-sm text-neutral-700 leading-tight' htmlFor='city'>
-                    City *
+                    {t('city')} *
                 </label>
                 <input
                     id='city'
@@ -105,7 +108,7 @@ const Billing = ({ countries, defaultValues = {}, onSubmit }) => {
 
             <div className='mb-4'>
                 <label className='text-sm text-neutral-700 leading-tight' htmlFor='postalCode'>
-                    Zip code *
+                    {t('zipCode')} *
                 </label>
                 <input
                     id='postalCode'
@@ -121,7 +124,7 @@ const Billing = ({ countries, defaultValues = {}, onSubmit }) => {
 
             <div>
                 <label className='text-sm text-neutral-700 leading-tight' htmlFor='country'>
-                    Country *
+                    {t('country')} *
                 </label>
                 <select
                     id='country'
@@ -146,7 +149,7 @@ const Billing = ({ countries, defaultValues = {}, onSubmit }) => {
             {getStates() && (
                 <div className='mt-4'>
                     <label className='text-sm text-neutral-700 leading-tight' htmlFor='state'>
-                        State or province *
+                        {t('stateOrProvince')} *
                     </label>
                     <select id='state' name='state'
                         className={classnames('form-input mt-2 bg-background-primary', {
