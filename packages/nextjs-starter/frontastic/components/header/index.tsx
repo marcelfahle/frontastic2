@@ -6,7 +6,6 @@ import Logo from "../../../components/icons/logo-catwalk";
 import IconSearch from "../../../components/icons/search";
 import IconHeart from "../../../components/icons/heart";
 import IconCart from "../../../components/icons/cart";
-import LanguageSwitcher from "../../../components/language-switcher";
 
 const Header = () => {
   const cart = useCart();
@@ -23,8 +22,7 @@ const Header = () => {
             </a>
           </Link>
         </div>
-        <div className="grid gap-5 grid-cols-4">
-          <LanguageSwitcher className="" />
+        <div className="grid gap-5 grid-cols-3">          
           <IconSearch className="" />
           <IconHeart className="" />
           <div className="relative">
